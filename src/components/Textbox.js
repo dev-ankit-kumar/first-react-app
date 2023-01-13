@@ -1,0 +1,93 @@
+import React, { useState } from "react";
+
+export default function Textbox(props) {
+  const Upclick = () => {
+    let newtext=text.toUpperCase();
+    setText(newtext);
+  };
+
+  const Lowclick = () => {
+    let newtext=text.toLowerCase();
+    setText(newtext);
+  };
+
+  const clear = () => {
+    let newtext='';
+    setText(newtext);
+  };
+
+  
+  const HandleOnChange = (event) => {
+setText(event.target.value);
+  };
+  const [text, setText] = useState("Enter the text");
+
+
+     
+  const[mystyle,setmystyle]=useState({
+    color:'black',
+    backgroundColor:'white'
+})
+
+const[btntext,setbtntext]=useState(
+    "Enable dark mode"
+)
+
+let darkmode={
+  color:'white',
+  backgroundColor:'black'
+ }
+ let lightmode={
+  color:'black',
+  backgroundColor:'white'
+ }
+
+
+const togglemode=()=>{
+  if(props.mode==='light'){
+    props.setmode('darkmode')
+    setbtntext("Enable light mode")
+  }
+  else{
+    props.setmode('light')
+    setbtntext("Enable dark mode")
+  }
+}
+  return (
+    <>
+    <div style={props.mode==='light'?lightmode:darkmode} >
+      <div  className='mycontainer ' >
+        <h1>Enter the text to analyze</h1>
+        {/* <label for="exampleFormControlTextarea1" className="form-label my-3">
+          {props.heading}
+        </label> */}
+        <textarea
+          className="form-control"
+          id="exampleFormControlTextarea1"
+          rows="10" value={text} onChange={HandleOnChange}
+          style={mystyle}
+        ></textarea>
+        <button className="btn btn-primary mx-2 my-2" onClick={Upclick}>
+        Change to upper case
+      </button>
+      <button className="btn btn-primary mx-2 my-2" onClick={Lowclick}>
+        Change to lower case
+      </button>
+      <button className="btn btn-primary mx-2 my-2" onClick={clear}>
+        Clear text!
+      </button>
+      </div>
+      
+    </div>
+    <div className="mycontainer"style={props.mode==='light'?lightmode:darkmode}>
+      <h1>Text Summary</h1>
+      <p>your content has {text.split(" ").length} words 📝 !</p>
+      <p>your content has {text.length} characters ✏️!</p>
+      <h2>Here is a preview:-</h2>
+      <p  className="summary">{text}</p>
+      
+    </div>
+    
+    </>
+  );
+}

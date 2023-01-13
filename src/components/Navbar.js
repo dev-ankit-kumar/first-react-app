@@ -1,0 +1,88 @@
+import React,{useState} from "react";
+import PropTypes from "prop-types";
+
+
+export default function Navbar(props) {
+
+
+  const[btntext,setbtntext]=useState(
+    "Enable dark mode"
+)
+
+let darkmode={
+  color:'white',
+  backgroundColor:'black'
+ }
+ let lightmode={
+  color:'black',
+  backgroundColor:'white'
+ }
+
+
+const togglemode=()=>{
+  if(props.mode==='light'){
+    props.setmode('darkmode')
+    setbtntext("Enable light mode")
+  }
+  else{
+    props.setmode('light')
+    setbtntext("Enable dark mode")
+  }
+}
+  return (
+    <nav className="navbar " style={props.mode==='light'? lightmode : darkmode}>
+      
+      <div className="container-fluid">
+        <a className="navbar-brand" href="/">
+          {props.tittle}
+        </a>
+        <button className="btn btn-primary my-3" onClick={togglemode}>{btntext}</button>
+
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="/">
+                Home
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/About">
+                {props.abouttext}
+              </a>
+            </li>
+          </ul>
+          {/* <form className="d-flex" role="search">
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button className="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form> */}
+      
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+Navbar.propTypes = { tittle: PropTypes.string.isRequired, abouttext: PropTypes.string.isRequired };
+
+// navbar.defaultProps={
+//     tittle:'Set tittle',
+//     abouttext:'about text is here'
+// }

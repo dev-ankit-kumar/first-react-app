@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+
 import './App.css';
+import About from './components/About';
+
+import Navbar from './components/Navbar';
+import Textbox from './components/Textbox';
+import react,{useState} from 'react';
+
+
 
 function App() {
+
+  const[mode,setmode]=useState("light")
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div>
+  <Navbar tittle="TextEditor" abouttext="About us" mode={mode} setmode={setmode} />
+
+  <Textbox heading="Enter the text"  mode={mode} setmode={setmode}/>
+  {/* <About mode={mode} setmode={setmode}/> */}
+    
+  </div>
   );
 }
 
