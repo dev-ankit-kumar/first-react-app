@@ -24,14 +24,18 @@ setText(event.target.value);
 
 
      
-  const[mystyle,setmystyle]=useState({
-    color:'black',
-    backgroundColor:'white'
-})
+//   const[mystyle,setmystyle]=useState({
+//     color:'black',
+//     backgroundColor:'white'
+// })
 
-const[btntext,setbtntext]=useState(
-    "Enable dark mode"
-)
+// const[btntext,setbtntext]=useState(
+//     "Enable dark mode"
+// )
+
+
+
+
 
 let darkmode={
   color:'white',
@@ -43,16 +47,17 @@ let darkmode={
  }
 
 
-const togglemode=()=>{
-  if(props.mode==='light'){
-    props.setmode('darkmode')
-    setbtntext("Enable light mode")
-  }
-  else{
-    props.setmode('light')
-    setbtntext("Enable dark mode")
-  }
-}
+//  const togglemode=()=>{
+//   if(props.mode==='light'){
+//     props.setmode('darkmode')
+//     // setbtntext("Enable light mode")
+//   }
+//   else{
+//     props.setmode('light')
+//     // setbtntext("Enable dark mode")
+//   }
+// }
+
   return (
     <>
     <div style={props.mode==='light'?lightmode:darkmode} >
@@ -65,7 +70,7 @@ const togglemode=()=>{
           className="form-control"
           id="exampleFormControlTextarea1"
           rows="10" value={text} onChange={HandleOnChange}
-          style={mystyle}
+          
         ></textarea>
         <button className="btn btn-primary mx-2 my-2" onClick={Upclick}>
         Change to upper case

@@ -18,25 +18,51 @@ let darkmode={
   backgroundColor:'white'
  }
 
+ const[tittlecolor,settittlecolor]=useState({
+  color:'black'
+})
+
+
+const[menucolor,setmenucolor]=useState({
+
+})
 
 const togglemode=()=>{
   if(props.mode==='light'){
     props.setmode('darkmode')
     setbtntext("Enable light mode")
+    settittlecolor({
+      color:'white'
+    })
+    setmenucolor({
+      backgroundColor:'white',
+      color:'black',
+     
+    })
   }
   else{
     props.setmode('light')
     setbtntext("Enable dark mode")
+    settittlecolor({
+      color:'black'
+    })
+
+   
   }
 }
   return (
     <nav className="navbar " style={props.mode==='light'? lightmode : darkmode}>
       
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <a className="navbar-brand" href="/" style={tittlecolor}>
           {props.tittle}
         </a>
-        <button className="btn btn-primary my-3" onClick={togglemode}>{btntext}</button>
+        {/* <button className="btn btn-primary my-3" onClick={togglemode}>{btntext}</button> */}
+
+        <div className="form-check form-switch">
+  <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"  onClick={togglemode}/>
+  <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{btntext}</label>
+</div>
 
         <button
           className="navbar-toggler"
@@ -47,9 +73,9 @@ const togglemode=()=>{
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon" style={menucolor}></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent"  style={menucolor}>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="/">

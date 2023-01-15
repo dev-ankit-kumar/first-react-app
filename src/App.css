@@ -14,3 +14,7 @@ color: white;
 .mycontainer{
     padding: 30px;
 }
+
+#navbarSupportedContent{
+    padding-inline: 20px;
+}
