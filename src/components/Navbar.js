@@ -27,6 +27,10 @@ const[menucolor,setmenucolor]=useState({
 
 })
 
+
+
+
+
 const togglemode=()=>{
   if(props.mode==='light'){
     props.setmode('darkmode')
@@ -39,6 +43,15 @@ const togglemode=()=>{
       color:'black',
      
     })
+
+    props.setalert(
+      "dark mode enabled ");
+      setTimeout(
+        ()=>{
+          props.setalert(null)
+        },2000
+      );
+    
   }
   else{
     props.setmode('light')
@@ -47,6 +60,13 @@ const togglemode=()=>{
       color:'black'
     })
 
+    props.setalert(
+      "light mode enabled ");
+      setTimeout(
+        ()=>{
+          props.setalert(null)
+        },2000
+      );
    
   }
 }

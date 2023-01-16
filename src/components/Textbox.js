@@ -1,31 +1,75 @@
 import React, { useState } from "react";
 
+
 export default function Textbox(props) {
   const Upclick = () => {
     let newtext=text.toUpperCase();
     setText(newtext);
+    props.setalert(
+      "changed to uppercase");
+      setTimeout(
+        ()=>{
+          props.setalert(null)
+        },2000
+      );
   };
 
   const Lowclick = () => {
     let newtext=text.toLowerCase();
     setText(newtext);
+    props.setalert(
+      "changed to lower case"
+    );
+    setTimeout(
+      ()=>{
+        props.setalert(null)
+      },2000
+    );
   };
 
   const clear = () => {
     let newtext='';
     setText(newtext);
+    props.setalert(
+      "All clear"
+    );
+
+    setTimeout(
+      ()=>{
+        props.setalert(null)
+      },2000
+    );
   };
   const copyclip = () => {
     var text=document.getElementById("exampleFormControlTextarea1");
     text.select();
     text.setSelectionRange(0,9999);
     navigator.clipboard.writeText(text.value);
+    props.setalert(
+      "your text is copied to clipboard"
+    );
+    setTimeout(
+      ()=>{
+        props.setalert(null)
+      },2000
+    );
   };
 
   const remove = () => {
     let newtext=text.split(/[ ]+/);
     setText(newtext.join(" "));
+    props.setalert(
+      "All extra space removed"
+    );
+    setTimeout(
+      ()=>{
+        props.setalert(null)
+      },2000
+    );
   };
+
+  
+
 
 
   const HandleOnChange = (event) => {
@@ -50,7 +94,12 @@ setText(event.target.value);
 
 let darkmode={
   color:'white',
-  backgroundColor:'black'
+  backgroundColor:'rgb(5, 5, 76)',
+  
+ }
+let darkmode2={
+  color:'white',
+  backgroundColor:'rgb(4, 2, 47)'
  }
  let lightmode={
   color:'black',
@@ -78,6 +127,7 @@ let darkmode={
           {props.heading}
         </label> */}
         <textarea
+          style={props.mode==='light'?lightmode:darkmode2}
           className="form-control"
           id="exampleFormControlTextarea1"
           rows="10" value={text} onChange={HandleOnChange}
@@ -98,6 +148,7 @@ let darkmode={
       <button className="btn btn-primary mx-2 my-2" onClick={remove}>
         remove extra space
       </button>
+     
       </div>
       
     </div>
