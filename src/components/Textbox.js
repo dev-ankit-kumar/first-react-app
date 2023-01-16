@@ -15,8 +15,19 @@ export default function Textbox(props) {
     let newtext='';
     setText(newtext);
   };
+  const copyclip = () => {
+    var text=document.getElementById("exampleFormControlTextarea1");
+    text.select();
+    text.setSelectionRange(0,9999);
+    navigator.clipboard.writeText(text.value);
+  };
 
-  
+  const remove = () => {
+    let newtext=text.split(/[ ]+/);
+    setText(newtext.join(" "));
+  };
+
+
   const HandleOnChange = (event) => {
 setText(event.target.value);
   };
@@ -80,6 +91,12 @@ let darkmode={
       </button>
       <button className="btn btn-primary mx-2 my-2" onClick={clear}>
         Clear text!
+      </button>
+      <button className="btn btn-primary mx-2 my-2" onClick={copyclip}>
+        copy
+      </button>
+      <button className="btn btn-primary mx-2 my-2" onClick={remove}>
+        remove extra space
       </button>
       </div>
       
