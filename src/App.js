@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+
 import './App.css';
+import About from './components/About';
+import { BrowserRouter ,Route,Routes} from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Textbox from './components/Textbox';
+import React,{useState} from 'react';
+import Alert from './components/Alert';
+
+
 
 function App() {
+  
+  const[mode,setmode]=useState("light")
+  const[alert,setalert]=useState(null)
+  // console.log("hello",alert)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+  <div>
+    <BrowserRouter>
+  <Navbar tittle="TextEditor"  setalert={setalert} abouttext="About us" mode={mode} setmode={setmode} />
+{ alert && <Alert alert={alert}  />}
+
+      <Routes>  
+
+    <Route path="/About" element={<About mode={mode} setmode={setmode}/> 
+}/>
+    <Route path="/" element={ <Textbox heading="Enter the text" setalert={setalert} mode={mode} setmode={setmode}/> }/>
+    
+      </Routes>
+      </BrowserRouter>
+  </div>
+  
   );
 }
 
