@@ -129,7 +129,7 @@ let darkmode2={
         </label> */}
         <textarea
           style={props.mode==='light'?lightmode:darkmode2}
-          className="form-control"
+          className="textarea1"
           id="exampleFormControlTextarea1"
           rows="10" value={text} onChange={HandleOnChange}
           

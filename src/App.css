@@ -14,6 +14,25 @@ color: white;
 .mycontainer{
     padding: 30px;
 }
+.btn{
+    margin: 3px;
+    padding: 10px;
+    background-color: rgb(67, 123, 206);
+    color: white;
+    border: none;
+}
+.textarea1{
+    width: 100%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.summary{
+    border: 3px solid white;
+}
+.navbar_brand1{
+    text-align: center;
+    text-decoration: none;
+
+}
 
 #navbarSupportedContent{
     padding-inline: 20px;
